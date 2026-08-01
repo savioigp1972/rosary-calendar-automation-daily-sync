@@ -26,7 +26,8 @@ An automated, lightweight **Google Apps Script** ⚙️ that determines today's 
 | **Thursday** 🤍 | **Luminous Mysteries** 💡 | Baptism in the Jordan 🌊, Wedding at Cana 🍷, Eucharist 🍞 |
 
 ---
-
+### 📸 Successful Execution Log
+![Apps Script Execution Log](execution-log.png)
 ## 🚀 Quick Setup Guide 🛠️
 
 ### Step 1: Open Google Apps Script 💻
@@ -38,5 +39,4 @@ An automated, lightweight **Google Apps Script** ⚙️ that determines today's 
 By default, the script adds events to your primary calendar:
 ```javascript
 var calendarId = 'primary'; 💡
-### 📸 Successful Execution Log
-![Apps Script Execution Log](execution-log.png)
+
