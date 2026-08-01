@@ -38,3 +38,5 @@ An automated, lightweight **Google Apps Script** ⚙️ that determines today's 
 By default, the script adds events to your primary calendar:
 ```javascript
 var calendarId = 'primary'; 💡
+### 📸 Successful Execution Log
+![Apps Script Execution Log](execution-log.png)
