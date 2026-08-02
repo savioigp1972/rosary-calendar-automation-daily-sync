@@ -9,12 +9,12 @@ function addDailyRosaryToCalendar() {
   var mysteryData = getRosaryMystery(dayOfWeek);
   var title = "Rosary: " + mysteryData.name;
   
-  // Set event for 8:00 PM - 9:00 PM today (20:00 to 21:00)
-  var startTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 20, 0, 0);
-  var endTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 21, 0, 0);
+  // Set date boundaries for full 24-hour duplicate check today
+  var dayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 0, 0, 0);
+  var dayEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 23, 59, 59);
   
   // Check if today's Rosary event already exists to prevent duplicates
-  var existingEvents = calendar.getEvents(startTime, endTime, { search: "Rosary:" });
+  var existingEvents = calendar.getEvents(dayStart, dayEnd, { search: "Rosary:" });
   if (existingEvents.length > 0) {
     Logger.log("Rosary event already exists for today.");
     return;
@@ -28,11 +28,15 @@ function addDailyRosaryToCalendar() {
                     "4. " + mysteryData.mysteries[3] + "\n\n" +
                     "5. " + mysteryData.mysteries[4];
   
-  calendar.createEvent(title, startTime, endTime, {
+  // Create as an All-Day event
+  var event = calendar.createAllDayEvent(title, today, {
     description: description
   });
   
-  Logger.log("Created Rosary event: " + title);
+  // Optional: Add a popup notification (e.g., 60 minutes before the day starts or custom time)
+  event.addPopupReminder(60);
+  
+  Logger.log("Created All-Day Rosary event: " + title);
 }
 
 function getRosaryMystery(day) {
@@ -86,7 +90,3 @@ function getRosaryMystery(day) {
       };
   }
 }
-
-
-
-
